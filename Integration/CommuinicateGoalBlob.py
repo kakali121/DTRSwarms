@@ -19,6 +19,7 @@ yellow_thresh_hand = (63, 87, -20,0,20, 60)
 
 pink_thresholds = (30,75, 40,70,-40,20)#(30, 75, 35, 70, -40, 0)
 
+
 TRIGGER_THRESHOLD = 5
 
 def clamp(num, min_value, max_value):
@@ -27,8 +28,10 @@ def clamp(num, min_value, max_value):
 def one_norm_dist(v1, v2):
     return sum([abs(v1[i] - v2[i]) for i in range(len(v1))])
 
+
 def two_norm_dist(v1, v2):
     return math.sqrt(sum([(v1[i] - v2[i])**2 for i in range(len(v1))]))
+
 
 class TrackedRect:
     def __init__(self, init_rect, norm_level: int,
@@ -326,6 +329,7 @@ def setInterface(network_if):
     interface.setup_loop_callback(loop_interrupt)
     return interface
 
+
 def getFlag(interface, network_if, base):
 
     #SSID='AIRLab-BigLab' # Network SSID
@@ -362,6 +366,7 @@ if __name__ == "__main__":
         network_if = setup_network(SSID,KEY)
         while not network_if.isconnected():
             network_if = setup_network(SSID,KEY)
+
         interface = setInterface(network_if)
 
 
@@ -389,11 +394,12 @@ if __name__ == "__main__":
     #flag = getFlag(interface, network_if, flag)
     while(True):
         if networking:
-            if (time.time_ns()-flag_last)/1000000000 > 10:
+            if (time.time_ns() -flag_last)/1000000000 > 10:
                 test = time.time_ns()
                 flag = getFlag(interface, network_if, flag)
                 flag_last = time.time_ns()
                 print("connection time: ", (flag_last - test)/1000000000)
+
         if flag == -1:
             break
         elif flag == 0: #blob detection
@@ -425,5 +431,7 @@ if __name__ == "__main__":
                     state = 3
                 else:
                     state = 2
+
+
         #print(clock.fps())
 
