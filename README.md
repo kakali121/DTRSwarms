@@ -9,7 +9,6 @@ Repository for various colored ballon detection (OpenMV), sending results using 
 - `pbPC.py`: file on PC that repeatedly register pink_ballon callback functions on OpenMV
 - `rpc.py`: rpc library dependency
 
-
 ## GoalDetection
 Repository for various colored goal detection (OpenMV), sending results using UART & RPC (OpenMV & PC).
 
