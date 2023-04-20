@@ -4,7 +4,7 @@ import image, network, rpc, struct, tf
 from pyb import UART
 
 # Disable built-in framebuffer.
-# omv.disable_fb(True)
+omv.disable_fb(True)
 
 # Set up network interface
 def setup_network(ssid, key):
